@@ -2,13 +2,13 @@
   "name": "understanding-express-middleware",
   "version": "1.0.0",
   "description": "Treehouse Course",
-  "main": "app.js",
+  "main": "node ./bin/www",
   "private": true,
   "scripts": {
     "importEXT": "if [ -f vscode-extensions.txt ]; then cat vscode-extensions.txt | xargs -n 1 code --install-extension; fi",
     "exportEXT": "code --list-extensions > vscode-extensions.txt",
-    "dev": "NODE_ENV=development nodemon app.js",
-    "prod": "NODE_ENV=production nodemon app.js",
+    "dev": "NODE_ENV=development nodemon node ./bin/www",
+    "prod": "NODE_ENV=production nodemon node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,6 +36,8 @@
     "node": "^10"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
   }
 }
