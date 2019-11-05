@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-
+const multiply = require('./multiply')
 const routes = require('./routes/index')
 
 const app = express()
@@ -13,17 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use((req, res, next) => {
-  if (req.body.number === undefined) return next()
-
-  const num = parseFloat(req.body.number)
-
-  if (Number.isNaN(num)) return next(new Error('Sumbitted value is not a number'))
-
-  const result = num * 2
-  req.doubled = result
-  next()
-})
+app.use(multiply({ by: 10 }))
 
 app.use('/', routes)
 
