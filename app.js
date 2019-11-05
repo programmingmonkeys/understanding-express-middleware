@@ -20,14 +20,16 @@ app.use(fav)
 // )
 
 app.use((req, res, next) => {
-  req.message = 'This message made it'
-  console.log('Two')
+  // req.message = 'This message made it'
+  console.log('foo')
 
-  next()
+  const err = new Error('This error')
+
+  next(err)
 })
 
 app.use((req, res, next) => {
-  console.log(req.message)
+  console.log('bar')
 
   next()
 })
