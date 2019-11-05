@@ -14,7 +14,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res, next) => {
+  if (req.body.number === undefined) return next()
+
   const num = parseFloat(req.body.number)
+
+  if (Number.isNaN(num)) return next(new Error('Sumbitted value is not a number'))
+
   const result = num * 2
   req.doubled = result
   next()
